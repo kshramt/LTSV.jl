@@ -1,6 +1,6 @@
 module LTSV
 
-export load, parse, parse_line
+export load, parse, parse_line, dump, string
 
 function load(f::String, converters::Dict=Dict())
     open(f, "r") do io
@@ -29,6 +29,31 @@ function parse_line(line::String, converters::Dict=Dict())
         ret[key] = get(converters, key, identity)(value)
     end
     ret
+end
+
+function dump(f::String, v, converters::Dict=Dict())
+    open(f, "w") do io
+        dump(io, v, converters)
+    end
+end
+
+function dump(io::IO, v, converters=Dict=Dict())
+    write(io, string(v, converters))
+end
+
+function string(a, converters::Dict=Dict())
+    join(map(a) do d
+             string(d, converters)
+         end)
+end
+
+function string(d::Dict, converters=Dict=Dict())
+    Base.string(join(map(d) do kv
+                         k, v = kv
+                        "$k:$(get(converters, k, identity)(v))"
+                     end,
+                '\t'),
+                '\n')
 end
 
 end
