@@ -41,8 +41,8 @@ function dump(io::IO, v, converters::Dict=Dict())
     write(io, string(v, converters))
 end
 
-function string(a, converters::Dict=Dict())
-    join(map(a) do d
+function string(ds, converters::Dict=Dict())
+    join(map(ds) do d
              string(d, converters)
          end)
 end
