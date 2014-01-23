@@ -37,7 +37,7 @@ function dump(f::String, v, converters::Dict=Dict())
     end
 end
 
-function dump(io::IO, v, converters=Dict=Dict())
+function dump(io::IO, v, converters::Dict=Dict())
     write(io, string(v, converters))
 end
 
@@ -47,7 +47,7 @@ function string(a, converters::Dict=Dict())
          end)
 end
 
-function string(d::Dict, converters=Dict=Dict())
+function string(d::Dict, converters::Dict=Dict())
     Base.string(join(map(d) do kv
                          k, v = kv
                         "$k:$(get(converters, k, identity)(v))"
