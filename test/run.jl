@@ -24,6 +24,6 @@ let
                                      "a:b\tmonth:22\tc:1\na:e\n",
                                      "c:1\ta:b\tmonth:22\na:e\n",
                                      "c:1\tmonth:22\ta:b\na:e\n",
-                                     "c:1\ta:b\tmonth:22\na:e\n",
-                                     "c:1\tmonth:22\ta:b\na:e\n"]
+                                     "month:22\ta:b\tc:1\na:e\n",
+                                     "month:22\tc:1\ta:b\na:e\n"]
 end
