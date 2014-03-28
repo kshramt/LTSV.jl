@@ -5,7 +5,7 @@ unshift!(LOAD_PATH, joinpath(dirname(@__FILE__), "..", "src"))
 import LTSV
 
 let
-    io = IOString("a:b	month:11	c:1
+    io = IOBuffer("a:b	month:11	c:1
 
 a:e
 
@@ -15,7 +15,7 @@ a:e
 end
 
 let
-    io = IOString(true, true)
+    io = IOBuffer(true, true)
     LTSV.dump(io,
               [["a"=>"b", "c"=>"1", "month"=>11],
                ["a"=>"e"]],
